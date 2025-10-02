@@ -6,14 +6,14 @@ namespace Coderynx.MessagingKit;
 
 public static class DependencyInjection
 {
-    public static void AddMessaging(this IHostApplicationBuilder builder, Action<MessagingBuilder> configure)
+    public static void AddMessaging(this IServiceCollection services, Action<MessagingBuilder> configure)
     {
-        var messagingBuilder = new MessagingBuilder(builder.Services);
+        var messagingBuilder = new MessagingBuilder(services);
         configure.Invoke(messagingBuilder);
 
-        builder.Services.AddSingleton<MessageBusManager>();
-        builder.Services.AddSingleton<MessageDispatcher>();
+        services.AddSingleton<MessageBusManager>();
+        services.AddSingleton<MessageDispatcher>();
 
-        builder.Services.AddScoped<IMessagePublisher, MessagePublisher>();
+        services.AddScoped<IMessagePublisher, MessagePublisher>();
     }
 }
