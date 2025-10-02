@@ -21,13 +21,50 @@ public sealed class MessageBusManager(IOptions<MessagingOptions> options, IServi
             _registrations.Add(registration);
         }
 
-        foreach (var registration in _registrations)
+        foreach (var bus in _registrations.Select(registration => registration.Bus))
         {
             _ = Task.Factory.StartNew(
-                async () => await registration.Bus.InitializeAsync(),
+                async () => await bus.InitializeAsync(),
                 TaskCreationOptions.LongRunning);
         }
     }
+
+    public void WaitForBusesInitialization()
+    {
+        var buses = _registrations
+            .Select(registration => registration.Bus)
+            .ToList();
+
+        if (buses.Count is 0)
+        {
+            return;
+        }
+
+        var resetEvent = new ManualResetEventSlim(false);
+        var timer = new Timer(CheckIfBusesAreInitialized, null, TimeSpan.Zero, TimeSpan.FromMilliseconds(50));
+
+        try
+        {
+            resetEvent.Wait();
+        }
+        finally
+        {
+            timer.Dispose();
+            resetEvent.Dispose();
+        }
+
+        return;
+
+        void CheckIfBusesAreInitialized(object? _)
+        {
+            if (buses.All(bus => bus.IsInitialized))
+            {
+                // ReSharper disable once AccessToDisposedClosure
+                resetEvent.Set();
+            }
+        }
+    }
+
 
     public IMessageBus? ResolveBus(string busName)
     {

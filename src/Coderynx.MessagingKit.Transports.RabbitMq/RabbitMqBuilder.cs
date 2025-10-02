@@ -1,4 +1,5 @@
 using Coderynx.MessagingKit.Abstractions;
+using Coderynx.MessagingKit.Exceptions;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Coderynx.MessagingKit.Transports.RabbitMq;
@@ -32,7 +33,7 @@ public sealed class RabbitMqBuilder : BusBuilderBase
     {
         if (_uri is null)
         {
-            throw new ApplicationException("RabbitMQ connection string not configured");
+            throw new MessagingKitBusConfigurationException(nameof(_uri));
         }
 
         return new RabbitMqOptions(_busName, _uri, _clientName, MessageRegistrations);

@@ -1,13 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <PackageId>Coderynx.MessagingKit.Abstractions</PackageId>
+        <PackageId>Coderynx.MessagingKit.Transports.InMemory</PackageId>
         <Authors>coderynx</Authors>
-        <Description>Messaging library abstractions</Description>
-        <PackageTags>messaging</PackageTags>
+        <Description>In-memory transport for Coderynx.MessagingKit</Description>
+        <PackageTags>messaging;inmemory</PackageTags>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -16,6 +16,10 @@
 
     <ItemGroup>
         <None Include="..\..\README.md" Pack="true" PackagePath=""/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Coderynx.MessagingKit\Coderynx.MessagingKit.csproj"/>
     </ItemGroup>
 
 </Project>

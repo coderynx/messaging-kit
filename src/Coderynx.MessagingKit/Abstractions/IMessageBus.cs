@@ -7,6 +7,16 @@ namespace Coderynx.MessagingKit.Abstractions;
 public interface IMessageBus : IAsyncDisposable
 {
     /// <summary>
+    ///     Indicates whether the message bus has been successfully initialized.
+    /// </summary>
+    /// <remarks>
+    ///     This property returns true if the InitializeAsync method has been executed
+    ///     and the required setup for the message bus has been completed; otherwise, it returns false.
+    ///     It is used to determine the readiness of the message bus for operations such as publishing messages.
+    /// </remarks>
+    bool IsInitialized { get; }
+
+    /// <summary>
     ///     Asynchronously initializes the message bus, setting up necessary connections, channels,
     ///     exchanges, and queues for message handling.
     /// </summary>
