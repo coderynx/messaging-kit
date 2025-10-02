@@ -1,3 +1,3 @@
-# Coderynx.MessagingKit
+# MessagingKit
 
-This repository contains the core messaging abstractions and transports (RabbitMQ, InMemory) for Coderynx.MessagingKit.
+A .NET library for building distributed application with support for multiple messaging backends.
