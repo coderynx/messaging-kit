@@ -35,7 +35,7 @@ public sealed class ApplicationFactory : WebApplicationFactory<ApplicationFactor
             ["ConnectionStrings:MessageBus"] = _rabbitMqContainer.GetConnectionString()
         });
 
-        appBuilder.AddMessaging(messaging =>
+        appBuilder.Services.AddMessaging(messaging =>
         {
             messaging.AddRabbitMq(rabbitMq =>
             {

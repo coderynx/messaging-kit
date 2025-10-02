@@ -25,7 +25,7 @@ public sealed class ApplicationFactory : WebApplicationFactory<ApplicationFactor
     {
         var appBuilder = WebApplication.CreateBuilder();
 
-        appBuilder.AddMessaging(messaging =>
+        appBuilder.Services.AddMessaging(messaging =>
         {
             messaging.AddInMemory(rabbitMq =>
             {
