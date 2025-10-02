@@ -19,10 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Coderynx.MessagingKit\Coderynx.MessagingKit.csproj"/>
-    </ItemGroup>
-
-    <ItemGroup>
+        <PackageReference Include="Coderynx.MessagingKit" Version="0.0.2" />
         <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.9"/>
         <PackageReference Include="RabbitMQ.Client" Version="7.1.2"/>
     </ItemGroup>
