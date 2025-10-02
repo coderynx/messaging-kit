@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{632DE579-8063-47DC-8B02-E1DCE7F4451A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1C7EE5A8-5499-44AC-9D9F-C9A04D6016D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coderynx.MessagingKit.Abstractions", "src\Coderynx.MessagingKit.Abstractions\Coderynx.MessagingKit.Abstractions.csproj", "{0F8D560E-52B5-4306-81F5-376D7F2C76A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coderynx.MessagingKit", "src\Coderynx.MessagingKit\Coderynx.MessagingKit.csproj", "{F5218C31-672E-4BA4-9ED1-0C6665E4DC6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coderynx.MessagingKit.Transports.RabbitMq", "src\Coderynx.MessagingKit.Transports.RabbitMq\Coderynx.MessagingKit.Transports.RabbitMq.csproj", "{8DCF19B0-9DA4-4A96-8247-75CC4DB96ED6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0F8D560E-52B5-4306-81F5-376D7F2C76A4} = {632DE579-8063-47DC-8B02-E1DCE7F4451A}
+		{F5218C31-672E-4BA4-9ED1-0C6665E4DC6D} = {632DE579-8063-47DC-8B02-E1DCE7F4451A}
+		{8DCF19B0-9DA4-4A96-8247-75CC4DB96ED6} = {632DE579-8063-47DC-8B02-E1DCE7F4451A}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F8D560E-52B5-4306-81F5-376D7F2C76A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F8D560E-52B5-4306-81F5-376D7F2C76A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F8D560E-52B5-4306-81F5-376D7F2C76A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F8D560E-52B5-4306-81F5-376D7F2C76A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5218C31-672E-4BA4-9ED1-0C6665E4DC6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5218C31-672E-4BA4-9ED1-0C6665E4DC6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5218C31-672E-4BA4-9ED1-0C6665E4DC6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5218C31-672E-4BA4-9ED1-0C6665E4DC6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DCF19B0-9DA4-4A96-8247-75CC4DB96ED6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DCF19B0-9DA4-4A96-8247-75CC4DB96ED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DCF19B0-9DA4-4A96-8247-75CC4DB96ED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DCF19B0-9DA4-4A96-8247-75CC4DB96ED6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

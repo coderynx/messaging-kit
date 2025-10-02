@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <PackageId>Coderynx.MessagingKit.Transports.RabbitMq</PackageId>
+        <Authors>coderynx</Authors>
+        <Description>RabbitMQ transport for Coderynx.MessagingKit</Description>
+        <PackageTags>messaging;rabbitmq</PackageTags>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\..\README.md" Pack="true" PackagePath=""/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Coderynx.MessagingKit\Coderynx.MessagingKit.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.9"/>
+        <PackageReference Include="RabbitMQ.Client" Version="7.1.2"/>
+        <PackageReference Update="Nerdbank.GitVersioning">
+            <Version>3.8.118</Version>
+        </PackageReference>
+    </ItemGroup>
+
+</Project>
