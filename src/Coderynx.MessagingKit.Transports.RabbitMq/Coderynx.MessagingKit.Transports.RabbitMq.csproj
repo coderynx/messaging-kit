@@ -25,9 +25,6 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.9"/>
         <PackageReference Include="RabbitMQ.Client" Version="7.1.2"/>
-        <PackageReference Update="Nerdbank.GitVersioning">
-            <Version>3.8.118</Version>
-        </PackageReference>
     </ItemGroup>
 
 </Project>

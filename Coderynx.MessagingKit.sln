@@ -13,6 +13,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coderynx.MessagingKit", "sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coderynx.MessagingKit.Transports.RabbitMq", "src\Coderynx.MessagingKit.Transports.RabbitMq\Coderynx.MessagingKit.Transports.RabbitMq.csproj", "{8DCF19B0-9DA4-4A96-8247-75CC4DB96ED6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coderynx.MessagingKit.Transports.InMemory", "src\Coderynx.MessagingKit.Transports.InMemory\Coderynx.MessagingKit.Transports.InMemory.csproj", "{B7E3B3D1-2E1A-4C9C-9C1F-5D0A6B50B7E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coderynx.MessagingKit.Transports.RabbitMq.IntegrationTests", "tests\Coderynx.MessagingKit.Transports.RabbitMq.IntegrationTests\Coderynx.MessagingKit.Transports.RabbitMq.IntegrationTests.csproj", "{A1B2C3D4-E5F6-4721-ABCD-1234567890AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coderynx.MessagingKit.Transports.InMemory.IntegrationTests", "tests\Coderynx.MessagingKit.Transports.InMemory.IntegrationTests\Coderynx.MessagingKit.Transports.InMemory.IntegrationTests.csproj", "{9DEF743B-6FB2-4672-86B0-05171E69D2C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coderynx.MessagingKit.Tests.Shared", "tests\Coderynx.MessagingKit.Tests.Shared\Coderynx.MessagingKit.Tests.Shared.csproj", "{826AC55B-933A-47C1-B2F6-A19484D62D8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +33,10 @@ Global
 		{0F8D560E-52B5-4306-81F5-376D7F2C76A4} = {632DE579-8063-47DC-8B02-E1DCE7F4451A}
 		{F5218C31-672E-4BA4-9ED1-0C6665E4DC6D} = {632DE579-8063-47DC-8B02-E1DCE7F4451A}
 		{8DCF19B0-9DA4-4A96-8247-75CC4DB96ED6} = {632DE579-8063-47DC-8B02-E1DCE7F4451A}
+		{B7E3B3D1-2E1A-4C9C-9C1F-5D0A6B50B7E5} = {632DE579-8063-47DC-8B02-E1DCE7F4451A}
+		{A1B2C3D4-E5F6-4721-ABCD-1234567890AB} = {1C7EE5A8-5499-44AC-9D9F-C9A04D6016D1}
+		{9DEF743B-6FB2-4672-86B0-05171E69D2C8} = {1C7EE5A8-5499-44AC-9D9F-C9A04D6016D1}
+		{826AC55B-933A-47C1-B2F6-A19484D62D8B} = {1C7EE5A8-5499-44AC-9D9F-C9A04D6016D1}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{0F8D560E-52B5-4306-81F5-376D7F2C76A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -39,5 +51,21 @@ Global
 		{8DCF19B0-9DA4-4A96-8247-75CC4DB96ED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DCF19B0-9DA4-4A96-8247-75CC4DB96ED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DCF19B0-9DA4-4A96-8247-75CC4DB96ED6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7E3B3D1-2E1A-4C9C-9C1F-5D0A6B50B7E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7E3B3D1-2E1A-4C9C-9C1F-5D0A6B50B7E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7E3B3D1-2E1A-4C9C-9C1F-5D0A6B50B7E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7E3B3D1-2E1A-4C9C-9C1F-5D0A6B50B7E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1B2C3D4-E5F6-4721-ABCD-1234567890AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B2C3D4-E5F6-4721-ABCD-1234567890AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B2C3D4-E5F6-4721-ABCD-1234567890AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B2C3D4-E5F6-4721-ABCD-1234567890AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DEF743B-6FB2-4672-86B0-05171E69D2C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DEF743B-6FB2-4672-86B0-05171E69D2C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DEF743B-6FB2-4672-86B0-05171E69D2C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DEF743B-6FB2-4672-86B0-05171E69D2C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{826AC55B-933A-47C1-B2F6-A19484D62D8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{826AC55B-933A-47C1-B2F6-A19484D62D8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{826AC55B-933A-47C1-B2F6-A19484D62D8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{826AC55B-933A-47C1-B2F6-A19484D62D8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

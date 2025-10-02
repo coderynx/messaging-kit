@@ -13,7 +13,9 @@ internal sealed class RabbitMqMessageBus(
     private const string ExchangeName = "exchange";
     private readonly RabbitMqOptions _options = (RabbitMqOptions)options;
     private IChannel _channel = null!;
-    private IConnection _connection = null!;
+    private IConnection? _connection;
+
+    public bool IsInitialized => _connection?.IsOpen ?? false;
 
     public async Task InitializeAsync(CancellationToken cancellationToken = default)
     {
@@ -22,8 +24,6 @@ internal sealed class RabbitMqMessageBus(
             Uri = _options.Uri,
             ClientProvidedName = _options.ClientName
         };
-
-        logger.LogInformation("Initializing RabbitMB bus {BusName}", options.BusName);
 
         _connection = await connectionFactory.CreateConnectionAsync(cancellationToken);
 
@@ -70,16 +70,6 @@ internal sealed class RabbitMqMessageBus(
                 cancellationToken: cancellationToken);
 
             logger.LogInformation("Listening for messages on queue {QueueName}", queueName);
-
-            continue;
-
-            async Task OnConsumerOnReceivedAsync(object sender, BasicDeliverEventArgs ea)
-            {
-                var letter = ea.BasicProperties.ToLetter(ea.Body);
-
-                await dispatcher.DispatchAsync(letter, ea.CancellationToken);
-                await _channel.BasicAckAsync(ea.DeliveryTag, false, ea.CancellationToken);
-            }
         }
 
         logger.LogInformation("Listening for messages on exchange {ExchangeName}", ExchangeName);
@@ -106,8 +96,20 @@ internal sealed class RabbitMqMessageBus(
         logger.LogInformation("Terminating RabbitMQ bus {BusName}", options.BusName);
 
         await _channel.DisposeAsync();
-        await _connection.DisposeAsync();
+
+        if (_connection is not null)
+        {
+            await _connection.DisposeAsync();
+        }
 
         logger.LogInformation("Terminated RabbitMQ bus {BusName}", options.BusName);
+    }
+
+    private async Task OnConsumerOnReceivedAsync(object sender, BasicDeliverEventArgs ea)
+    {
+        var letter = ea.BasicProperties.ToLetter(ea.Body);
+
+        await dispatcher.DispatchAsync(letter, ea.CancellationToken);
+        await _channel.BasicAckAsync(ea.DeliveryTag, false, ea.CancellationToken);
     }
 }
