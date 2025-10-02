@@ -29,12 +29,14 @@ internal sealed class InMemoryMessageBus(
             var topic = registration.GetTopicName();
             _typeToTopic[registration.MessageType] = topic;
 
-            var channel = Channel.CreateUnbounded<Letter>(new UnboundedChannelOptions
+            var channelOptions = new UnboundedChannelOptions
             {
                 SingleReader = false,
                 SingleWriter = false,
                 AllowSynchronousContinuations = true
-            });
+            };
+
+            var channel = Channel.CreateUnbounded<Letter>(channelOptions);
 
             _channels[topic] = channel;
 
@@ -51,16 +53,20 @@ internal sealed class InMemoryMessageBus(
     {
         if (!_typeToTopic.TryGetValue(letter.PayloadType, out var topic))
         {
-            topic = string.Concat(letter.PayloadType.Name
-                .Select((x, i) => i > 0 && char.IsUpper(x) ? "-" + char.ToLower(x) : char.ToLower(x).ToString()));
+            topic = string.Concat(
+                letter.PayloadType.Name.Select((x, i) => i > 0 && char.IsUpper(x)
+                    ? "-" + char.ToLower(x)
+                    : char.ToLower(x).ToString()));
         }
 
         logger.LogTrace("InMemory publish to topic {Topic}", topic);
 
         if (!_channels.TryGetValue(topic, out var channel))
         {
-            logger.LogWarning("No in-memory consumer channel found for topic {Topic}. Message will not be delivered.",
+            logger.LogWarning(
+                "No in-memory consumer channel found for topic {Topic}. Message will not be delivered.",
                 topic);
+
             return;
         }
 
@@ -88,7 +94,7 @@ internal sealed class InMemoryMessageBus(
             }
             catch
             {
-                /* ignore */
+                // ignore
             }
         }
 

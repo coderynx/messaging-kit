@@ -19,7 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Coderynx.MessagingKit.Abstractions" Version="0.0.1" />
+        <PackageReference Include="Coderynx.MessagingKit.Abstractions" Version="0.0.1"/>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.9"/>
         <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.9"/>
         <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.9"/>
