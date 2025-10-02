@@ -40,10 +40,10 @@ internal sealed class InMemoryMessageBus(
 
             _channels[topic] = channel;
 
-            var worker = Task.Run(() => WorkerAsync(topic, channel.Reader, _cts.Token), cancellationToken);
+            var worker = Task.Run(() => ConsumeLettersAsync(topic, channel.Reader, _cts.Token), cancellationToken);
             _workers.Add(worker);
 
-            logger.LogInformation("Listening for messages on topic {Topic}", topic);
+            logger.LogInformation("Listening for messages on topic {Topic} using InMemory bus", topic);
         }
 
         return Task.CompletedTask;
@@ -55,22 +55,22 @@ internal sealed class InMemoryMessageBus(
         {
             topic = string.Concat(
                 letter.PayloadType.Name.Select((x, i) => i > 0 && char.IsUpper(x)
-                    ? "-" + char.ToLower(x)
+                    ? $"-{char.ToLower(x)}"
                     : char.ToLower(x).ToString()));
         }
-
-        logger.LogTrace("InMemory publish to topic {Topic}", topic);
 
         if (!_channels.TryGetValue(topic, out var channel))
         {
             logger.LogWarning(
-                "No in-memory consumer channel found for topic {Topic}. Message will not be delivered.",
+                "No InMemory consumer channel found for topic {Topic}. Message will not be delivered.",
                 topic);
 
             return;
         }
 
         await channel.Writer.WriteAsync(letter, cancellationToken);
+        
+        logger.LogDebug("Published message on topic {Topic} using InMemory bus", topic);
     }
 
     public async ValueTask DisposeAsync()
@@ -104,7 +104,7 @@ internal sealed class InMemoryMessageBus(
         }
         catch (Exception ex)
         {
-            logger.LogDebug(ex, "Error while awaiting in-memory workers shutdown");
+            logger.LogDebug(ex, "Error while awaiting InMemory workers shutdown");
         }
 
         _cts.Dispose();
@@ -112,7 +112,10 @@ internal sealed class InMemoryMessageBus(
         logger.LogInformation("Terminated InMemory bus {BusName}", options.BusName);
     }
 
-    private async Task WorkerAsync(string topic, ChannelReader<Letter> reader, CancellationToken cancellationToken)
+    private async Task ConsumeLettersAsync(
+        string topic,
+        ChannelReader<Letter> reader,
+        CancellationToken cancellationToken)
     {
         try
         {
@@ -130,7 +133,7 @@ internal sealed class InMemoryMessageBus(
                     }
                     catch (Exception ex)
                     {
-                        logger.LogError(ex, "Failed to dispatch in-memory message on topic {Topic}", topic);
+                        logger.LogError(ex, "Failed to dispatch InMemory message on topic {Topic}", topic);
                     }
                 }
             }
@@ -141,7 +144,7 @@ internal sealed class InMemoryMessageBus(
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, "Unhandled error in in-memory worker for topic {Topic}", topic);
+            logger.LogError(ex, "Unhandled error in InMemory worker for topic {Topic}", topic);
         }
     }
 }
