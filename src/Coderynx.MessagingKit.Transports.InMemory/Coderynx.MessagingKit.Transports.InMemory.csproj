@@ -19,7 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Coderynx.MessagingKit\Coderynx.MessagingKit.csproj"/>
+      <PackageReference Include="Coderynx.MessagingKit" Version="0.0.2" />
     </ItemGroup>
 
 </Project>
