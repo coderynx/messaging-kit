@@ -1,13 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\..\src\Coderynx.MessagingKit\Coderynx.MessagingKit.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Update="Nerdbank.GitVersioning">
+            <Version>3.9.50</Version>
+        </PackageReference>
     </ItemGroup>
 
 </Project>
