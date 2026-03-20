@@ -13,8 +13,8 @@ namespace Coderynx.MessagingKit.Transports.RabbitMq.IntegrationTests;
 
 public sealed class ApplicationFactory : WebApplicationFactory<ApplicationFactory>, IAsyncLifetime
 {
-    private readonly RabbitMqContainer _rabbitMqContainer = new Testcontainers.RabbitMq.RabbitMqBuilder()
-        .Build();
+    private readonly RabbitMqContainer _rabbitMqContainer =
+        new Testcontainers.RabbitMq.RabbitMqBuilder("rabbitmq:latest").Build();
 
     public async Task InitializeAsync()
     {

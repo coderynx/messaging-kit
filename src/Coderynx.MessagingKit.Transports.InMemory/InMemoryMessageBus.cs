@@ -69,7 +69,7 @@ internal sealed class InMemoryMessageBus(
         }
 
         await channel.Writer.WriteAsync(letter, cancellationToken);
-        
+
         logger.LogDebug("Published message on topic {Topic} using InMemory bus", topic);
     }
 
